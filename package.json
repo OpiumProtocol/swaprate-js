@@ -1,6 +1,6 @@
 {
   "name": "@opiumteam/swaprate-js",
-  "version": "1.0.1",
+  "version": "1.0.2",
   "description": "SwapRate JS SDK",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -10,8 +10,18 @@
     "docs": "typedoc",
     "test": "mocha -r ts-node/register test/**/*.ts"
   },
-  "author": "Opium Team",
   "license": "ISC",
+  "author": "Opium Team <hi@opium.team>",
+  "contributors": [
+    {
+      "name": "Ali Nuraldin",
+      "email": "ali@opium.team"
+    }
+  ],
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/OpiumProtocol/swaprate-js.git"
+  },
   "files": ["/lib"],
   "dependencies": {
     "axios": "^0.19.2",
