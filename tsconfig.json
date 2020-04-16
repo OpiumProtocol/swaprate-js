@@ -11,5 +11,11 @@
   "include": [
     "src/**/*"
   ],
-  "exclude": ["node_modules"]
+  "exclude": ["node_modules"],
+  "typedocOptions": {
+    "inputFiles": "src/index.ts",
+    "mode": "library",
+    "out": "docs",
+    "name": "SwapRate JS SDK"
+  }
 }

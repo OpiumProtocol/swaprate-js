@@ -22,6 +22,9 @@ type ApiOptions = {
   namespace: Namespace
 }
 
+/**
+ * SwapRate HTTP and Socket.io API
+ */
 export default class Api {
   private readonly _options: ApiOptions
   private readonly _endpoint: string
