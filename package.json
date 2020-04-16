@@ -35,7 +35,8 @@
   },
   "husky": {
     "hooks": {
-      "pre-push": "npm run build && npm run lint && npm run docs"
+      "pre-commit": "npm run docs && git add docs",
+      "pre-push": "npm run build && npm run lint"
     }
   }
 }
