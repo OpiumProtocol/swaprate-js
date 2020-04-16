@@ -1,6 +1,6 @@
 {
   "name": "@opiumteam/swaprate-js",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "description": "SwapRate JS SDK",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
@@ -12,6 +12,7 @@
   },
   "author": "Opium Team",
   "license": "ISC",
+  "files": ["/lib"],
   "dependencies": {
     "axios": "^0.19.2",
     "eth-sig-util": "^2.5.3",
