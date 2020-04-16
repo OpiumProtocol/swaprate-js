@@ -1,5 +1,5 @@
 {
-  "name": "swaprate-js",
+  "name": "@opiumteam/swaprate-js",
   "version": "1.0.0",
   "description": "SwapRate JS SDK",
   "main": "lib/index.js",
@@ -10,7 +10,7 @@
     "docs": "typedoc",
     "test": "mocha -r ts-node/register test/**/*.ts"
   },
-  "author": "",
+  "author": "Opium Team",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.2",
