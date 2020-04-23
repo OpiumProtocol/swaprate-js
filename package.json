@@ -46,7 +46,7 @@
   },
   "husky": {
     "hooks": {
-      "pre-commit": "npm run docs && cp docs-template/* docs/ && git add docs",
+      "pre-commit": "npm run docs && cp docs-template/.nojekyll docs/.nojekyll && git add docs",
       "pre-push": "npm run build && npm run lint"
     }
   }
