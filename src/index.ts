@@ -5,3 +5,8 @@ export default {
   Api,
   Utils
 }
+
+export {
+  Api,
+  Utils
+}
