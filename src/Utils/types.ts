@@ -206,7 +206,8 @@ export type PutOrdersCancelRequestQuery = {
 
 // Products
 export enum ProductType {
-  COMPOUND = 'COMPOUND'
+  COMPOUND = 'COMPOUND',
+  AAVE = 'AAVE'
 }
 
 export enum ProductSubtype {
