@@ -1,6 +1,6 @@
 {
   "name": "@opiumteam/swaprate-js",
-  "version": "1.0.3",
+  "version": "1.0.4",
   "description": "SwapRate JS SDK",
   "main": "lib/index.js",
   "types": "lib/index.d.ts",
