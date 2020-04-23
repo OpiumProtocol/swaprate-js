@@ -22,7 +22,9 @@ npm i @opiumteam/swaprate-js
 ```
 import { Api } from '@opiumteam/swaprate-js'
 
-Api
+const api = new Api()
+
+api
   .getProducts()
   .then(products => console.log(products))
 ```
