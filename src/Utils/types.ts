@@ -122,8 +122,8 @@ type ChartsData = {
 }
 
 export type Charts = {
-  payFixed: ChartsData
-  receiveFixed: ChartsData
+  payFixed: ChartsData[]
+  receiveFixed: ChartsData[]
 }
 
 // Requests
