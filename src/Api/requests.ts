@@ -1,52 +1,30 @@
 import axios from 'axios'
 
 import {
-  EIP712Message,
+  MetaConfigResponse,
 
-  PayReceiveType,
-  AggregateType
+  WalletBalanceResponse,
+
+  AuthLoginDataResponse,
+
+  PostOrdersFormRequestBody,
+  PostOrdersFormResponse,
+
+  PostOrdersSignRequestBody,
+  PostOrdersSignResponse,
+
+  PutOrdersCancelRequestQuery,
+
+  ProductsResponse,
+
+  ProductQuoteResponse
 } from '../Utils/types'
-
-// Meta
-export type SupportedToken = {
-  title: string
-  address: string
-  decimals: number
-}
-
-export type MetaConfigResponse = {
-  networkId: number
-  defaults: {
-    productId: string
-  }
-  supportedTokens: SupportedToken[]
-  opiumContracts: {
-    TokenSpender: string
-    CompoundSupplyAggregator: string
-  }
-  supportedMaturities: number[]
-}
 
 export const metaConfig = {
   get: (endpoint: string): Promise<MetaConfigResponse> =>
     axios
       .get(`${endpoint}/meta/config`)
       .then(response => response.data),
-}
-
-// Wallet
-type BalanceToken = {
-  title: string
-  address: string
-  decimals: number
-  total: string
-  allowance: string
-  compoundSupplyAllowance: string
-}
-
-export type WalletBalanceResponse = {
-  eth: string
-  tokens: BalanceToken[]
 }
 
 export const wallet = {
@@ -60,54 +38,11 @@ export const wallet = {
       .then(response => response.data),
 }
 
-
-// Auth
-export type AuthLoginDataResponse = {
-  ttl: number
-  data: EIP712Message
-}
-
 export const auth = {
   get: (endpoint: string): Promise<AuthLoginDataResponse> =>
     axios
       .get(`${endpoint}/auth/loginData`)
       .then(response => response.data),
-}
-
-
-// Orders
-export type PostOrdersFormRequestBody = {
-  productId: string
-  pay: {
-    type: PayReceiveType
-    rate: number | null
-  }
-  receive: {
-    type: PayReceiveType
-    rate: number | null
-  }
-  nominal: number
-  maturity: number
-  partialFill: boolean
-  aggregate: AggregateType
-}
-
-export type PostOrdersFormResponse = {
-  formedOrderId: string
-  orderToSign: EIP712Message
-}
-
-export type PostOrdersSignRequestBody = {
-  formedOrderId: string
-  signature: string
-}
-
-export type PostOrdersSignResponse = {
-  orderId: string
-}
-
-export type PutOrdersCancelRequestQuery = {
-  orderIds: string[]
 }
 
 export const orders = {
@@ -137,34 +72,6 @@ export const orders = {
         }
       })
       .then(response => response.data),
-}
-
-
-// Products
-
-export enum ProductType {
-  COMPOUND = 'COMPOUND'
-}
-
-export enum ProductSubtype {
-  SUPPLY = 'SUPPLY',
-  BORROW = 'BORROW'
-}
-
-export type Product = {
-  productId: string
-  title: string
-  token: string
-  type: ProductType
-  subtype: ProductSubtype
-  margin: number
-  fixedRateSupported: boolean
-}
-
-export type ProductsResponse = Product[]
-
-export type ProductQuoteResponse = {
-  fixedRate: number
 }
 
 export const products = {

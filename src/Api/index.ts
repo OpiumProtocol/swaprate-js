@@ -6,7 +6,18 @@ import { Namespace, endpoints } from '../config'
 
 // Utils
 import { AccessToken } from './../Utils/accessToken'
-import { Order, Swap, Position, Charts } from './../Utils/types'
+import {
+  Order, Swap, Position, Charts,
+  MetaConfigResponse,
+  ProductsResponse,
+  ProductQuoteResponse,
+  AuthLoginDataResponse,
+  WalletBalanceResponse,
+  PostOrdersFormRequestBody,
+  PostOrdersFormResponse,
+  PostOrdersSignRequestBody,
+  PostOrdersSignResponse
+} from './../Utils/types'
 
 export enum ApiError {
   Unauthorized = 'Unauthorized',
@@ -52,39 +63,39 @@ export default class Api {
   // HTTP Api
 
   // Config
-  public getMetaConfig(): Promise<requests.MetaConfigResponse> {
+  public getMetaConfig(): Promise<MetaConfigResponse> {
     return requests.metaConfig.get(this._endpoint)
   }
 
   // Products
-  public getProducts(): Promise<requests.ProductsResponse> {
+  public getProducts(): Promise<ProductsResponse> {
     return requests.products.get(this._endpoint)
   }
 
-  public getFixedRateDepositQuote(productId: string, maturity: number, nominal: number): Promise<requests.ProductQuoteResponse> {
+  public getFixedRateDepositQuote(productId: string, maturity: number, nominal: number): Promise<ProductQuoteResponse> {
     return requests.products.quote(this._endpoint, productId, maturity, nominal)
   }
 
   // Auth
-  public getAuthLoginData(): Promise<requests.AuthLoginDataResponse> {
+  public getAuthLoginData(): Promise<AuthLoginDataResponse> {
     return requests.auth.get(this._endpoint)
   }
 
   // Wallet
-  public getWalletBalance(accessToken = this._accessToken): Promise<requests.WalletBalanceResponse> {
+  public getWalletBalance(accessToken = this._accessToken): Promise<WalletBalanceResponse> {
     const _accessToken = this._validAccessToken(accessToken)
 
     return requests.wallet.get(this._endpoint, _accessToken)
   }
 
   // Orders
-  public postOrderForm(order: requests.PostOrdersFormRequestBody, accessToken = this._accessToken): Promise<requests.PostOrdersFormResponse> {
+  public postOrderForm(order: PostOrdersFormRequestBody, accessToken = this._accessToken): Promise<PostOrdersFormResponse> {
     const _accessToken = this._validAccessToken(accessToken)
 
     return requests.orders.form(this._endpoint, order, _accessToken)
   }
 
-  public postOrderSign(order: requests.PostOrdersSignRequestBody, accessToken = this._accessToken): Promise<requests.PostOrdersSignResponse> {
+  public postOrderSign(order: PostOrdersSignRequestBody, accessToken = this._accessToken): Promise<PostOrdersSignResponse> {
     const _accessToken = this._validAccessToken(accessToken)
 
     return requests.orders.sign(this._endpoint, order, _accessToken)

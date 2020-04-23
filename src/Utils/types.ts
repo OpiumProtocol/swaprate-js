@@ -24,7 +24,7 @@ export enum PayReceiveType {
   FLOATING = 'FLOATING'
 }
 
-enum SwapStatus {
+export enum SwapStatus {
   PENDING = 'PENDING',
   PROCESSED = 'PROCESSED',
   REJECTED = 'REJECTED',
@@ -124,4 +124,108 @@ type ChartsData = {
 export type Charts = {
   payFixed: ChartsData
   receiveFixed: ChartsData
+}
+
+// Requests
+
+// Meta
+export type SupportedToken = {
+  title: string
+  address: string
+  decimals: number
+}
+
+export type MetaConfigResponse = {
+  networkId: number
+  defaults: {
+    productId: string
+  }
+  supportedTokens: SupportedToken[]
+  opiumContracts: {
+    TokenSpender: string
+    CompoundSupplyAggregator: string
+  }
+  supportedMaturities: number[]
+}
+
+// Wallet
+type BalanceToken = {
+  title: string
+  address: string
+  decimals: number
+  total: string
+  allowance: string
+  compoundSupplyAllowance: string
+}
+
+export type WalletBalanceResponse = {
+  eth: string
+  tokens: BalanceToken[]
+}
+
+// Auth
+export type AuthLoginDataResponse = {
+  ttl: number
+  data: EIP712Message
+}
+
+// Orders
+export type PostOrdersFormRequestBody = {
+  productId: string
+  pay: {
+    type: PayReceiveType
+    rate: number | null
+  }
+  receive: {
+    type: PayReceiveType
+    rate: number | null
+  }
+  nominal: number
+  maturity: number
+  partialFill: boolean
+  aggregate: AggregateType
+}
+
+export type PostOrdersFormResponse = {
+  formedOrderId: string
+  orderToSign: EIP712Message
+}
+
+export type PostOrdersSignRequestBody = {
+  formedOrderId: string
+  signature: string
+}
+
+export type PostOrdersSignResponse = {
+  orderId: string
+}
+
+export type PutOrdersCancelRequestQuery = {
+  orderIds: string[]
+}
+
+// Products
+export enum ProductType {
+  COMPOUND = 'COMPOUND'
+}
+
+export enum ProductSubtype {
+  SUPPLY = 'SUPPLY',
+  BORROW = 'BORROW'
+}
+
+export type Product = {
+  productId: string
+  title: string
+  token: string
+  type: ProductType
+  subtype: ProductSubtype
+  margin: number
+  fixedRateSupported: boolean
+}
+
+export type ProductsResponse = Product[]
+
+export type ProductQuoteResponse = {
+  fixedRate: number
 }
