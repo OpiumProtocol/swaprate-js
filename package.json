@@ -24,7 +24,7 @@
   },
   "files": ["/lib"],
   "dependencies": {
-    "axios": "^0.19.2",
+    "axios": "^0.21.1",
     "eth-sig-util": "^2.5.3",
     "socket.io-client": "^2.3.0"
   },
